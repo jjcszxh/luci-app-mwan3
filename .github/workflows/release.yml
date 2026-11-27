@@ -19,11 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - arch: x86_64
-            version: openwrt-25.12
           - arch: aarch64_generic
-            version: openwrt-25.12
-          - arch: arm_cortex-a7_neon-vfpv4
             version: openwrt-25.12
 
     steps:
@@ -49,7 +45,7 @@ jobs:
         env:
           ARCH: ${{ matrix.arch }}-${{ matrix.version }}
           FEEDNAME: lucimwan3nft
-          PACKAGES: ${{ env.PKG_NAME }}
+          PACKAGES: ${{ env.PKG_NAME }} luci-i18n-mwan3-zh-cn
           INDEX: 0
           FEED_DIR: ${{ github.workspace }}/feed
           NO_SHFMT_CHECK: 1
@@ -69,12 +65,18 @@ jobs:
             dir=$(dirname "$f")
             mv -v "$f" "$dir/${PKG_NAME}_${PKG_VERSION}.apk"
           done
+          for f in $(find bin/packages -type f -path "*/lucimwan3nft/luci-i18n-mwan3-zh-cn[_-][0-9]*.apk"); do
+            dir=$(dirname "$f")
+            mv -v "$f" "$dir/luci-i18n-mwan3-zh-cn_${PKG_VERSION}.apk"
+          done
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PKG_NAME }}-${{ matrix.arch }}-${{ matrix.version }}
-          path: bin/packages/*/lucimwan3nft/${{ env.PKG_NAME }}*.apk
+          path: |
+            bin/packages/*/lucimwan3nft/${{ env.PKG_NAME }}*.apk
+            bin/packages/*/lucimwan3nft/luci-i18n-mwan3-zh-cn*.apk
           if-no-files-found: ignore
 
   release:
