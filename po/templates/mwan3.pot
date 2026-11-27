@@ -289,7 +289,7 @@ msgid "Debug"
 msgstr ""
 
 #: applications/luci-app-mwan3/htdocs/luci-static/resources/view/mwan3/network/policy.js:147
-msgid "Delete failed:"
+msgid "Delete failed: "
 msgstr ""
 
 #: applications/luci-app-mwan3/htdocs/luci-static/resources/view/mwan3/network/policy.js:150
@@ -713,7 +713,7 @@ msgstr ""
 
 #: applications/luci-app-mwan3/htdocs/luci-static/resources/view/mwan3/network/rule.js:99
 #: applications/luci-app-mwan3/htdocs/luci-static/resources/view/mwan3/network/rule.js:140
-msgid "Invalid IP address or prefix:"
+msgid "Invalid IP address or prefix: "
 msgstr ""
 
 #: applications/luci-app-mwan3/htdocs/luci-static/resources/view/mwan3/network/simulator.js:385
@@ -1306,7 +1306,7 @@ msgid "Save"
 msgstr ""
 
 #: applications/luci-app-mwan3/htdocs/luci-static/resources/view/mwan3/network/policy.js:119
-msgid "Save failed:"
+msgid "Save failed: "
 msgstr ""
 
 #: applications/luci-app-mwan3/htdocs/luci-static/resources/view/mwan3/status/detail.js:86
@@ -1664,7 +1664,7 @@ msgid ""
 msgstr ""
 
 #: applications/luci-app-mwan3/htdocs/luci-static/resources/view/mwan3/network/simulator.js:220
-msgid "Traffic will be load-balanced across"
+msgid "Traffic will be load-balanced across "
 msgstr ""
 
 #: applications/luci-app-mwan3/htdocs/luci-static/resources/view/mwan3/network/simulator.js:253
@@ -1874,7 +1874,7 @@ msgid "mark"
 msgstr ""
 
 #: applications/luci-app-mwan3/htdocs/luci-static/resources/view/mwan3/network/simulator.js:220
-msgid "members"
+msgid " members"
 msgstr ""
 
 #: applications/luci-app-mwan3/htdocs/luci-static/resources/view/mwan3/network/simulator.js:201
