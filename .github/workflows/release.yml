@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build for ${{ matrix.version }}
+    name: Build ${{ matrix.arch }} for ${{ matrix.version }}
     runs-on: ubuntu-latest
     env:
       REPO_APK_KEY: ${{ secrets.REPO_APK_KEY }}
@@ -19,7 +19,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - version: openwrt-25.12
+          - arch: x86_64
+            version: openwrt-25.12
+          - arch: aarch64_generic
+            version: openwrt-25.12
+          - arch: arm_cortex-a7_neon-vfpv4
+            version: openwrt-25.12
 
     steps:
       - name: Checkout repo
@@ -42,7 +47,7 @@ jobs:
       - name: Build with OpenWrt SDK
         uses: openwrt/gh-action-sdk@v8
         env:
-          ARCH: x86_64-${{ matrix.version }}
+          ARCH: ${{ matrix.arch }}-${{ matrix.version }}
           FEEDNAME: lucimwan3nft
           PACKAGES: ${{ env.PKG_NAME }}
           INDEX: 0
@@ -68,7 +73,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.PKG_NAME }}-${{ matrix.version }}
+          name: ${{ env.PKG_NAME }}-${{ matrix.arch }}-${{ matrix.version }}
           path: bin/packages/*/lucimwan3nft/${{ env.PKG_NAME }}*.apk
           if-no-files-found: ignore
 
